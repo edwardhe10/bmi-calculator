@@ -30,16 +30,28 @@ function BMIForm({ onSubmit }) {
   return (
     <form className="bmi-form" onSubmit={handleSubmit}>
       <div>
-        <label>Weight (lbs)</label>
-        <input type="number" value={weight} onChange={handleWeightChange} />
+        <label>Weight (lbs):</label>
+        <input
+          className="weight-input"
+          type="number"
+          value={weight}
+          onChange={handleWeightChange}
+        />
       </div>
       <div>
-        <label>Height (in)</label>
-        <input type="number" value={height} onChange={handleHeightChange} />
+        <label>Height (in):</label>
+        <input
+          className="height-input"
+          type="number"
+          value={height}
+          onChange={handleHeightChange}
+        />
       </div>
       <div>
-        <button type="submit">Submit</button>
-        <button onClick={refresh} type="submit">
+        <button className="submit-button" type="submit">
+          Submit
+        </button>
+        <button className="refresh-button" onClick={refresh} type="submit">
           Refresh
         </button>
       </div>
