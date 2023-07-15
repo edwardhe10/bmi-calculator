@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 function BMIForm({ onSubmit }) {
-  const [weight, setWeight] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
 
   const handleWeightChange = (event) => {
     setWeight(event.target.value);
@@ -15,12 +15,13 @@ function BMIForm({ onSubmit }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (weight === 0 || height === 0) {
+    if (weight <= 0 || height <= 0) {
       alert("Please enter a valid weight and height!");
+      return;
     }
     onSubmit(weight, height);
-    setWeight(0);
-    setHeight(0);
+    setWeight("");
+    setHeight("");
   };
 
   const refresh = () => {
@@ -28,7 +29,7 @@ function BMIForm({ onSubmit }) {
   };
 
   return (
-    <form className="bmi-form" onSubmit={handleSubmit}>
+    <form className="bmi-form">
       <div>
         <label>Weight (lbs):</label>
         <input
@@ -48,7 +49,7 @@ function BMIForm({ onSubmit }) {
         />
       </div>
       <div>
-        <button className="submit-button" type="submit">
+        <button className="submit-button" type="submit" onClick={handleSubmit}>
           Submit
         </button>
         <button className="refresh-button" onClick={refresh} type="submit">
